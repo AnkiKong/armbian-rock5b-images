@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
 
 jobs:
   prepare_release:
@@ -31,10 +33,10 @@ jobs:
     needs: prepare_release
     strategy:
       matrix:
-        BOARD: [rock-5a, rock-5b]
+        BOARD: [rock-5b]
         DISTRO: [armbian]
         FLAVOR: [ubuntu, cli]
-        BRANCH: [legacy]
+        BRANCH: [legacy, collabora]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
